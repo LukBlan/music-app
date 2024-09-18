@@ -6,11 +6,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application"%>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li><a href="<%= cats_url %>">Home</a></li>
+
+        <% if current_user %>
+          <li>
+            <form action="<%=session_url %>" method="post">
+              <input type="hidden" name="_method" value="delete" />
+              <button>Logout</button>
+            </form>
+          </li>
+          <% else %>
+            <li><a href="<%= new_session_url %>">Login</a></li>
+            <li><a href="<%= new_user_url %>">Sign Up</a></li>
+          <% end %>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
