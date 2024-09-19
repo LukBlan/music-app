@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :users
-  resources :cats
   resource :session
-  resources :bands
+
+  resources :bands do
+    resources :albums, only: [:new]
+  end
+
+  resources :albums, only: [:create, :edit, :update, :destroy]
 end

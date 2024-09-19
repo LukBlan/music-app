@@ -1,0 +1,28 @@
+<form action="<%= album_url(@album) %>" method="post">
+  <%= csrf_token %>
+
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="band">Band</label>
+  <select id="band" name="album[band_id]">
+    <% @bands.each do |band| %>
+      <option value="<%= band.id %>"><%= band.name %></option>
+    <% end %>
+  </select>
+
+  <label for="title">Title</label>
+  <input id="title" type="text" name="album[title]" value="<%= @album.title %>" />
+
+  <label for="year">Year</label>
+  <input id="year" type="number" name="album[year]" value="<%= @album.year %>" >
+
+  <input id="record_type" type="radio" name="album[record_type]" value="studio" <% if @album.studio %> checked <% end %> />
+  <label for="record_type" >Studio</label>
+
+  <input id="live-record-type" type="radio" name="album[record_type]" value="live" <% unless @album.studio %> checked <% end %>/>
+  <label for="live-record-type">Live</label>
+
+  <br>
+
+  <button>Edit</button>
+</form>

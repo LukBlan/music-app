@@ -1,0 +1,20 @@
+<form action="<%= albums_url %>" method="post">
+  <%= csrf_token %>
+  <input type="hidden" name="album[band_id]" value="<%= params[:band_id] %>" />
+
+  <label for="title">Title</label>
+  <input id="title" type="text" name="album[title]" />
+
+  <label for="year">Year</label>
+  <input id="year" type="number" name="album[year]">
+
+  <input id="record_type" type="radio" name="album[record_type]" value="studio" checked >
+  <label for="record_type" >Studio</label>
+
+  <input id="record_type" type="radio" name="album[record_type]" value="live" checked >
+  <label for="record_type">Live</label>
+
+  <br>
+
+  <button>Create</button>
+</form>

@@ -1,0 +1,9 @@
+<%= album.title %>
+<a href="<%= edit_album_url(album) %>">Edit</a>
+
+<form action="<%= album_url(album) %>" method="post">
+  <%= csrf_token %>
+
+  <input type="hidden" name="_method" value="delete">
+  <button>delete</button>
+</form>
