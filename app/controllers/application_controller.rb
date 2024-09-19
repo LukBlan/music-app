@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_login
-    redirect_to cats_url if current_user
+    redirect_to bands_url if current_user
   end
 
   def logout

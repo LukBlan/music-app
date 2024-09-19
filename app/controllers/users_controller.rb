@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  before_action :redirect_if_login, only: [:create, :new]
+  # before_action :redirect_if_login, only: [:create, :new]
 
   def create
     user = User.new(user_params)
-
 
     if user.save
       login(user)

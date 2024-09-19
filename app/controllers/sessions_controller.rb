@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :redirect_if_login, only: [:new, :create]
+  # before_action :redirect_if_login, only: [:new, :create]
 
   def new
     render :new
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
     if user
       login(user)
-      redirect_to cats_url
+      redirect_to bands_url
     else
       render json: {"message": "not found"}
     end
