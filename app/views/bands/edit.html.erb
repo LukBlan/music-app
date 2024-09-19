@@ -1,5 +1,6 @@
 <form action="<%= band_path(@id) %>" method="post">
   <input type="hidden" name="_method" value="patch">
+  <%= csrf_token %>
 
   <label for="band">Name</label>
   <input id="band" type="text" name="band[name]" />

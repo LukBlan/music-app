@@ -2,8 +2,10 @@
   <ul>
     <li>
       <a href="<%= band_url(band) %>"><%= band.name %></a>
+
       <form action="<%= band_url(band) %>" method="post">
         <input type="hidden" name="_method" value="delete" >
+        <%= csrf_token %>
         <button>Destroy</button>
       </form>
     </li>
