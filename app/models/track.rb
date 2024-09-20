@@ -6,4 +6,6 @@ class Track < ApplicationRecord
 
   validates :title, :ord, :track_type, presence: true
   validates :track_type, inclusion: TRACK_TYPES
+
+  belongs_to :album
 end

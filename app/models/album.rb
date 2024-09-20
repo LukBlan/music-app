@@ -8,7 +8,9 @@ class Album < ApplicationRecord
   validates :title, :year, presence: true
   validates :record_type, inclusion: RECORD_TYPES
   before_save :set_studio
-  has_many :tracks
+
+  has_many :tracks, dependent: :destroy
+  belongs_to :band
 
   def record_type=(record_type)
     @record_type = record_type
