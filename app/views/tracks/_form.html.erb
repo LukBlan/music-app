@@ -1,0 +1,50 @@
+<% track = track %>
+<% action_url = track.persisted? ? track_url(track) : tracks_url%>
+<% form_button_title = track.persisted? ? "Update" : "Create" %>
+
+<form action="<%= action_url %>"  method="post">
+  <%= csrf_token %>
+
+  <% if track.persisted? %>
+    <input type="hidden" name="_method" value="patch">
+
+    <label for="album">Album</label>
+    <select id="album" name="track[album_id]">
+      <%= @albums.each do |album| %>
+        <option value="<%= album.id %>" <% if @track.album_id == album.id %> selected <% end %>>
+          <%= album.title %>
+        </option>
+      <% end %>
+    </select>
+  <% else %>
+    <input type="hidden" name="track[album_id]" value="<%= params[:album_id] %>" />
+  <% end %>
+
+
+  <label for="title">Title</label>
+  <input id="title" type="text" name="track[title]" value="<%= @track.title %>" />
+  <br />
+
+  <label for="ord">Ord</label>
+  <input id="ord" type="number" name="track[ord]"  value="<%= @track.ord %>">
+  <br />
+
+
+  <label for="lyric">Lyrics</label>
+  <textarea id="lyric" name="track[lyrics]"><%= @track.lyrics %></textarea>
+  <br />
+
+
+  <label for="track_type">Track Type</label>
+  <select id="track_type" name="track[track_type]">
+    <%= Track::TRACK_TYPES.each do |track_type| %>
+      <option value="<%= track_type %>" <% if @track.track_type == track_type %> selected <% end %>>
+        <%= track_type %>
+      </option>
+    <% end %>
+  </select>
+  <br />
+
+
+  <button><%= form_button_title %></button>
+</form>

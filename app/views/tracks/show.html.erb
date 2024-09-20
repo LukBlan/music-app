@@ -1,0 +1,10 @@
+<h1><%= @track.title %></h1>
+<p><%= @track.ord %></p>
+
+<a href="<%= edit_track_url %>">Edit</a>
+
+<form action="<%= track_url(@track) %>" method="post">
+  <%= csrf_token %>
+  <input type="hidden" name="_method" value="delete" />
+  <button>Delete</button>
+</form>

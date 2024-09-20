@@ -42,6 +42,17 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def show
+    @album = Album.find_by(id: params[:id])
+
+    if @album
+      @tracks = @album.tracks
+      render "show"
+    else
+      redirect_to bands_url
+    end
+  end
+
   private
   def album_params
     params.require(:album).permit(:year, :title, :band_id, :record_type)
