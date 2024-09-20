@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :redirect_if_not_login, only: [:new, :create, :edit, :update, :destroy, :show]
+
   def new
     render "new"
   end

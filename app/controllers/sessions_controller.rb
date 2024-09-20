@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  # before_action :redirect_if_login, only: [:new, :create]
+  before_action :redirect_if_login, only: [:new, :create]
 
   def new
     render :new

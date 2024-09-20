@@ -1,5 +1,5 @@
 class BandsController < ApplicationController
-  # before_action :redirect_if_not_login, only: [:index, :create, :new]
+  before_action :redirect_if_not_login, only: [:index, :create, :edit, :show, :update, :destroy, :new]
 
   def index
     @bands = Band.all

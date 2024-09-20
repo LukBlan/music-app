@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+  before_action :redirect_if_not_login, only: [:new, :create, :edit, :update, :show, :destroy]
   def new
     @track = Track.new(track_type: "bonus")
     render "new"
