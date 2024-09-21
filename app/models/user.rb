@@ -5,8 +5,14 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, length: {minimum: 6}, allow_nil: true
 
+  has_many :notes
+
   def password=(password)
     @password = password
+  end
+
+  def have_note?(note)
+    note.user_id == self.id
   end
 
   def self.find_by_credentials(email, password)

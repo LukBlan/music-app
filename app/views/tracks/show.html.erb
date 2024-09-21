@@ -8,3 +8,10 @@
   <input type="hidden" name="_method" value="delete" />
   <button>Delete</button>
 </form>
+
+<h2>Notes</h2>
+<% @track.notes.each do |note| %>
+  <%= render note %>
+<% end %>
+
+<a href="<%= new_track_note_url(@track) %>">Add note</a>

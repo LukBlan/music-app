@@ -17,6 +17,15 @@ class ApplicationController < ActionController::Base
     redirect_to bands_url if current_user
   end
 
+  def render_403_if_try_to_delete_now_own_note
+    user = current_user
+    note = Note.find_by(id: params[:id])
+
+    unless user.have_note?(note)
+      render plain: "Not authorized", status: 403
+    end
+  end
+
   def logout
     session[:session_token] = nil
     @current_user = nil

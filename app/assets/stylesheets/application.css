@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+.note {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}

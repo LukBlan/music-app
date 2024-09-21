@@ -1,0 +1,8 @@
+<form action="<%= notes_url %>" method="post">
+  <%= csrf_token %>
+
+  <input type="hidden" name="note[track_id]" value="<%= track_id %>" />
+  <label for="note">Note</label>
+  <textarea id="note" name="note[note]"></textarea>
+  <button>create</button>
+</form>

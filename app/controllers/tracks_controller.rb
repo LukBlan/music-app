@@ -32,7 +32,7 @@ class TracksController < ApplicationController
   end
 
   def show
-    @track = Track.find_by(id: params[:id])
+    @track = Track.eager_load(:notes, notes: :user).find_by(id: params[:id])
 
     if @track
       render "show"

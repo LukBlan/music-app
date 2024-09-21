@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
     if user.save
       login(user)
-      redirect_to cats_url
+      redirect_to bands_url
     else
       render json: {"message": user.errors.full_messages}, status: 400
     end
