@@ -1,6 +1,8 @@
 <h1><%= @track.title %></h1>
 <p><%= @track.ord %></p>
 
+<pre><%= ugly_lyrics(@track.lyrics) %></pre>
+
 <a href="<%= edit_track_url %>">Edit</a>
 
 <form action="<%= track_url(@track) %>" method="post">

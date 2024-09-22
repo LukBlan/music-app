@@ -5,9 +5,6 @@ class NotesController < ApplicationController
   end
 
   def create
-    p "-----------------"
-    p note_params
-    p "-----------------"
     note = Note.new(note_params)
     note.user_id = current_user.id
 
