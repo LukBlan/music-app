@@ -7,8 +7,12 @@
   <br />
   <br />
 
-  <label for="password">Password</label>
-  <input id="password" name="user[password]" type="password" />
+  <div>
+    <label for="password">Password</label>
+    <input id="password" name="user[password]" type="password" />
+    <% if flash[:errors] %> <span style="color: red"><%= flash[:errors] %></span> <% end %>
+  </div>
+
   <br />
   <br />
   <button>Log In</button>

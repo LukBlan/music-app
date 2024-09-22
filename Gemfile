@@ -67,3 +67,5 @@ gem 'psych', '~> 4.0'
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 gem 'binding_of_caller', '~> 1.0'
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
+gem "letter_opener", group: :development
+gem 'launchy', '~> 2.4', '>= 2.4.3'

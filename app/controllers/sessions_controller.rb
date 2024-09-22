@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
       login(user)
       redirect_to bands_url
     else
-      render json: {"message": "not found"}
+      flash[:errors] = "email or password are invalid"
+      redirect_to new_session_url
     end
   end
 

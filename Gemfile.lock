@@ -124,6 +124,10 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.10.0)
+      launchy (>= 2.2, < 4)
     logger (1.6.1)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -251,6 +255,8 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  launchy (~> 2.4, >= 2.4.3)
+  letter_opener
   pg (~> 1.1)
   psych (~> 4.0)
   puma (>= 5.0)

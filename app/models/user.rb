@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, length: {minimum: 6}, allow_nil: true
 
-  has_many :notes
+  has_many :notes, dependent: :destroy
 
   def password=(password)
     @password = password
@@ -16,16 +16,15 @@ class User < ApplicationRecord
   end
 
   def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
+    user = User.find_by(email: email, activated: true)
+    return nil unless user
     hash_password = BCrypt::Password.new(user.password_digest)
-
     return user if hash_password.is_password?(password)
-
     nil
   end
 
   def hash_password
-    self.password_digest = BCrypt::Password.create(@password)
+    self.password_digest ||= BCrypt::Password.create(@password)
   end
 
   def create_session_token

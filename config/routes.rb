@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    collection do
+      get "activate"
+    end
+  end
   resource :session
 
   resources :bands do
