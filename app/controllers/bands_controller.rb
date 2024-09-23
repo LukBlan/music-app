@@ -1,5 +1,6 @@
 class BandsController < ApplicationController
   before_action :redirect_if_not_login, only: [:index, :create, :edit, :show, :update, :destroy, :new]
+  before_action :check_admin_authorization, only: [:create, :edit, :update, :destroy]
 
   def index
     @bands = Band.all

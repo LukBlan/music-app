@@ -1,0 +1,17 @@
+<ul>
+  <% @users.each do |user|%>
+  <li style="display: flex; gap: 2rem">
+    <p><%= user.email %></p>
+    <p>Role: <%= user.admin ? "Admin" : "Normal" %></p>
+
+    <% unless user.admin %>
+      <form action="<%= upgrade_users_url %>" method="post">
+        <%= csrf_token %>
+        <input type="hidden" name="user_id" value="<%= user.id %>" />
+        <button>Upgrade To Admin</button>
+      </form>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+

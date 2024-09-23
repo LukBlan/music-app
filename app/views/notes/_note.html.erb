@@ -2,7 +2,7 @@
   <p><%= note.note %></p>
   <p><%= note.user.email %></p>
 
-  <% if current_user.have_note?(note) %>
+  <% if current_user.admin || current_user.have_note?(note) %>
     <form action="<%= note_url(note.id) %>" method="post">
       <%= csrf_token %>
       <input type="hidden" name="_method" value="delete">

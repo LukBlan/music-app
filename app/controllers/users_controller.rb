@@ -1,5 +1,19 @@
 class UsersController < ApplicationController
   before_action :redirect_if_login, only: [:create, :new]
+  before_action :check_admin_authorization, only: [:index]
+
+  def index
+    @users = User.all
+    render "index"
+  end
+
+  def upgrade
+    user_id = params[:user_id]
+    user = User.find_by(id: user_id)
+    user.toggle(:admin)
+    user.save
+    redirect_to users_url
+  end
 
   def create
     user = User.new(user_params)
@@ -29,7 +43,6 @@ class UsersController < ApplicationController
     else
       render json: {"message": "User not found"}, status: :not_found
     end
-
   end
 
   def new

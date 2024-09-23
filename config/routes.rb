@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get "activate"
+      post "upgrade"
     end
   end
   resource :session

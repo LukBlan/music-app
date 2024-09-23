@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     user = current_user
     note = Note.find_by(id: params[:id])
 
-    unless user.have_note?(note)
+    unless current_user.admin || user.have_note?(note)
       render plain: "Not authorized", status: 403
     end
   end
@@ -29,5 +29,9 @@ class ApplicationController < ActionController::Base
   def logout
     session[:session_token] = nil
     @current_user = nil
+  end
+
+  def check_admin_authorization
+    render plain: "Forbidden action" unless current_user.admin
   end
 end

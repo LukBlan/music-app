@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :render_403_if_try_to_delete_now_own_note, only: [:destroy]
+
   def new
     render "new"
   end

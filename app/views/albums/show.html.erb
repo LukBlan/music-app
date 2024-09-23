@@ -10,4 +10,6 @@
   </ul>
 <% end %>
 
-<a href="<%= new_album_track_url(@album) %>">New</a>
+<%= show_if_current_user_is_admin do %>
+  <a href="<%= new_album_track_url(@album) %>">New</a>
+<% end %>

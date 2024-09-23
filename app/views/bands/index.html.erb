@@ -3,13 +3,20 @@
     <li>
       <a href="<%= band_url(band) %>"><%= band.name %></a>
 
-      <form action="<%= band_url(band) %>" method="post">
-        <input type="hidden" name="_method" value="delete" >
-        <%= csrf_token %>
-        <button>Destroy</button>
-      </form>
-    </li>
-  </ul>
+      <%= show_if_current_user_is_admin do %>
+          <form action="<%= band_url(band) %>" method="post">
+            <input type="hidden" name="_method" value="delete" >
+            <%= csrf_token %>
+            <button>Destroy</button>
+          </form>
+        </li>
+      </ul>
+    <% end %>
 <% end %>
 
-<a href="<%= new_band_url %>">New</a>
+<br>
+<br>
+
+<%= show_if_current_user_is_admin do %>
+  <a href="<%= new_band_url %>">New</a>
+<% end %>

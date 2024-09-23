@@ -3,15 +3,19 @@
 
 <pre><%= ugly_lyrics(@track.lyrics) %></pre>
 
-<a href="<%= edit_track_url %>">Edit</a>
+<%= show_if_current_user_is_admin do %>
+  <a href="<%= edit_track_url %>">Edit</a>
 
-<form action="<%= track_url(@track) %>" method="post">
-  <%= csrf_token %>
-  <input type="hidden" name="_method" value="delete" />
-  <button>Delete</button>
-</form>
+  <form action="<%= track_url(@track) %>" method="post">
+    <%= csrf_token %>
+    <input type="hidden" name="_method" value="delete" />
+    <button>Delete</button>
+  </form>
+<% end %>
+
 
 <h2>Notes</h2>
+
 <% @track.notes.each do |note| %>
   <%= render note %>
 <% end %>
